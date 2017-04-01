@@ -1,5 +1,6 @@
-import argparse
 from selenium import webdriver
+import argparse
+import yaml
 
 
 def signin(name, email, year):
@@ -20,12 +21,30 @@ def signin(name, email, year):
     browser.find_element_by_id('ss-submit').click()
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Sign in to sparsa")
-    parser.add_argument('-n', dest='name', help='Your name, first & last', required=True)
-    parser.add_argument('-e', dest='email', help='Your email', required=True)
-    parser.add_argument('-y', dest='year', help='What year you are in school',
-                        required=True)
+def main():
+    """
+        Main file to get parameters
+    """
+    parser = argparse.ArgumentParser(description="Sign in to sparsa, run with" \
+                                     " no arguments to read from config file")
+    parser.add_argument('-n', dest='name', help='Your name, first & last')
+    parser.add_argument('-e', dest='email', help='Your email')
+    parser.add_argument('-y', dest='year', help='What year you are in school')
 
     args = parser.parse_args()
-    signin(args.name, args.email, args.year)
+    name = args.name
+    email = args.email
+    year = args.year
+    if not name or not email or not year:
+        with open("config.yml", 'r') as ymlfile:
+            cfg = yaml.load(ymlfile)
+
+        name = cfg['info']['name']
+        email = cfg['info']['email']
+        year = cfg['info']['year']
+
+    print(name, email, year)
+    signin(name, email, year)
+
+if __name__ == '__main__':
+    main()
