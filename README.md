@@ -1,16 +1,16 @@
 # SparsaSignin
 Script to sign into sparsa
 
-# Requirements
+## Requirements
 ```pip install -r requirements.txt```
 
-# If using Chrome
+## If using Chrome
 Make sure chromedriver is in your path, or add ```chromepath="/path/to/chromedriver"``` to the config.yml under the info tag
 
-# If using Firefox
+## If using Firefox
 Install firefox and gecko driver, make sure they're in your PATH
 
-# How to install the geckodriver
+### How to install the geckodriver
 You may either install the binary using the instructions below, or you may use the provided binary file. Please ensure the binary is in your PATH.
 
 ```bash
