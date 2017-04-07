@@ -58,7 +58,7 @@ def main():
         name = cfg['info']['name']
         email = cfg['info']['email']
         year = cfg['info']['year']
-        if 'chromepath' in cfg['info']
+        if 'chromepath' in cfg['info']:
             path = cfg['info']['chromepath']
             browser_type = 'chrome'
 
