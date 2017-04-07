@@ -2,6 +2,12 @@
 Script to sign into sparsa
 
 # Requirements
+```pip install -r requirements.txt```
+
+# If using Chrome
+Make sure chromedriver is in your path, or add ```chromepath="/path/to/chromedriver"``` to the config.yml under the info tag
+
+# If using Firefox
 Install firefox and gecko driver, make sure they're in your PATH
 
 # How to install the geckodriver
