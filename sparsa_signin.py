@@ -3,7 +3,7 @@ import argparse
 import yaml
 
 
-def signin(name, email, year):
+def signin(name, email, year, browser_type='firefox'):
     """
         Sign into the sparsa meeting
 
@@ -11,7 +11,14 @@ def signin(name, email, year):
         :param email: the users email
         :param year: the users year in school
     """
-    browser = webdriver.Firefox()
+    if browser_type == 'firefox':
+        browser = webdriver.Firefox()
+    elif browser_type == 'chrome':
+        browser = webdriver.Chrome()
+    else:
+        print "Invalid browser type"
+        return None
+
     browser.get("https://www.sparsa.org/signin")
     form_name = browser.find_element_by_id('entry_1000000')
     form_email = browser.find_element_by_id('entry_1000001')
@@ -44,7 +51,7 @@ def main():
         year = cfg['info']['year']
 
     print(name, email, year)
-    signin(name, email, year)
+    signin(name, email, year, browser_type='chrome')
 
 if __name__ == '__main__':
     main()
